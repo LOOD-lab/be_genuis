@@ -7,8 +7,13 @@ import Vision from './components/Vision'
 import EventBanner from './components/EventBanner'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import AdminApp from './admin/AdminApp'
+
+const isAdmin = window.location.pathname.startsWith('/admin')
 
 function App() {
+  if (isAdmin) return <AdminApp />
+
   return (
     <div className="font-sans">
       <AnnouncementBar />
