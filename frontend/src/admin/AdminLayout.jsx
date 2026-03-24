@@ -5,6 +5,7 @@ import Actualites from './pages/Actualites'
 import Inscriptions from './pages/Inscriptions'
 import Messages from './pages/Messages'
 import Rapports from './pages/Rapports'
+import Images from './pages/Images'
 
 const menu = [
   { id: 'dashboard', label: 'Dashboard', icon: '▦' },
@@ -13,6 +14,7 @@ const menu = [
   { id: 'inscriptions', label: 'Inscriptions', icon: '◎' },
   { id: 'messages', label: 'Messages', icon: '◇' },
   { id: 'rapports', label: 'Rapports', icon: '◻' },
+  { id: 'images', label: 'Images', icon: '◱' },
 ]
 
 const pages = {
@@ -22,6 +24,7 @@ const pages = {
   inscriptions: Inscriptions,
   messages: Messages,
   rapports: Rapports,
+  images: Images,
 }
 
 const AdminLayout = ({ onLogout }) => {
