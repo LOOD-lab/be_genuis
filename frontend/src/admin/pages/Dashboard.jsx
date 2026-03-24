@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
 
-const StatCard = ({ label, value, icon, color }) => (
+const StatCard = ({ label, value, color }) => (
   <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
     <div className="flex items-center justify-between mb-3">
-      <span className="text-2xl">{icon}</span>
       <span className={`text-xs font-bold px-2 py-1 rounded-full ${color}`}>{label}</span>
     </div>
     <p className="text-4xl font-black text-gray-900">{value}</p>
@@ -41,11 +40,11 @@ const Dashboard = () => {
         <p className="text-sm text-gray-500 mt-1">Vue d ensemble Be Genius Institut</p>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
-        <StatCard label="Evenements" value={stats.evenements} icon="📅" color="bg-yellow-100 text-yellow-700" />
-        <StatCard label="Actualites" value={stats.actualites} icon="📰" color="bg-blue-100 text-blue-700" />
-        <StatCard label="Inscriptions" value={stats.inscriptions} icon="👥" color="bg-green-100 text-green-700" />
-        <StatCard label="Messages" value={stats.messages} icon="✉️" color="bg-purple-100 text-purple-700" />
-        <StatCard label="Rapports" value={stats.rapports} icon="📄" color="bg-orange-100 text-orange-700" />
+        <StatCard label="Evenements" value={stats.evenements} color="bg-yellow-100 text-yellow-700" />
+        <StatCard label="Actualites" value={stats.actualites} color="bg-blue-100 text-blue-700" />
+        <StatCard label="Inscriptions" value={stats.inscriptions} color="bg-green-100 text-green-700" />
+        <StatCard label="Messages" value={stats.messages} color="bg-purple-100 text-purple-700" />
+        <StatCard label="Rapports" value={stats.rapports} color="bg-orange-100 text-orange-700" />
       </div>
       <div className="bg-white rounded-xl p-6 border border-gray-100">
         <h2 className="font-bold text-gray-900 mb-4">Acces rapide</h2>

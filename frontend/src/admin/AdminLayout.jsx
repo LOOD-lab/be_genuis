@@ -8,11 +8,11 @@ import Rapports from './pages/Rapports'
 
 const menu = [
   { id: 'dashboard', label: 'Dashboard', icon: '▦' },
-  { id: 'evenements', label: 'Evenements', icon: '📅' },
-  { id: 'actualites', label: 'Actualites', icon: '📰' },
-  { id: 'inscriptions', label: 'Inscriptions', icon: '👥' },
-  { id: 'messages', label: 'Messages', icon: '✉️' },
-  { id: 'rapports', label: 'Rapports', icon: '📄' },
+  { id: 'evenements', label: 'Evenements', icon: '◈' },
+  { id: 'actualites', label: 'Actualites', icon: '◉' },
+  { id: 'inscriptions', label: 'Inscriptions', icon: '◎' },
+  { id: 'messages', label: 'Messages', icon: '◇' },
+  { id: 'rapports', label: 'Rapports', icon: '◻' },
 ]
 
 const pages = {
@@ -46,7 +46,7 @@ const AdminLayout = ({ onLogout }) => {
                   : 'text-gray-400 hover:bg-gray-800 hover:text-white'
               }`}
             >
-              <span>{item.icon}</span>
+              <span className="text-base">{item.icon}</span>
               {item.label}
             </button>
           ))}
@@ -56,7 +56,7 @@ const AdminLayout = ({ onLogout }) => {
             onClick={onLogout}
             className="w-full text-xs text-gray-500 hover:text-red-400 transition-colors text-left"
           >
-            ⬤ Se deconnecter
+            Se deconnecter
           </button>
         </div>
       </aside>
