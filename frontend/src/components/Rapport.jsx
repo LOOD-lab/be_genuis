@@ -1,13 +1,16 @@
 import useInView from '../hooks/useInView'
-
-const activities = [
-  { label: "Parainnage", img: "/rapport1.png" },
-  { label: "Seances de mentorat", img: "/rapport2.png" },
-  { label: "Competition", img: "/rapport3.png" },
-]
+import { useSettings } from '../hooks/useSettings'
 
 const Rapport = () => {
   const [ref, isVisible] = useInView()
+  const { img } = useSettings()
+
+  const activities = [
+    { label: "Parainnage", key: "rapport1" },
+    { label: "Seances de mentorat", key: "rapport2" },
+    { label: "Competition", key: "rapport3" },
+  ]
+
   return (
     <section ref={ref} className="py-20 px-8 md:px-12 bg-white">
       <h2 className={`text-3xl md:text-4xl font-bold text-center text-gray-900 mb-14 animate-fade-up ${isVisible ? 'visible' : ''}`}>
@@ -15,16 +18,9 @@ const Rapport = () => {
       </h2>
       <div className="flex flex-col md:flex-row gap-8 justify-center mb-14">
         {activities.map((item, i) => (
-          <div
-            key={item.label}
-            className={`flex-1 max-w-xs animate-fade-up animate-delay-${(i + 1) * 100} ${isVisible ? 'visible' : ''}`}
-          >
+          <div key={item.key} className={`flex-1 max-w-xs animate-fade-up animate-delay-${(i+1)*100} ${isVisible ? 'visible' : ''}`}>
             <div className="w-full h-52 bg-gray-200 overflow-hidden mb-4 group">
-              <img
-                src={item.img}
-                alt={item.label}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <img src={img(item.key, `/${item.key}.png`)} alt={item.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
             <p className="font-bold text-sm text-gray-900 mb-2">{item.label}</p>
             <div className="w-10 h-0.5 bg-yellow-400"></div>

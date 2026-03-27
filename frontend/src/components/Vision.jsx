@@ -1,7 +1,10 @@
 import useInView from '../hooks/useInView'
+import { useSettings } from '../hooks/useSettings'
 
 const Vision = () => {
   const [ref, isVisible] = useInView()
+  const { img } = useSettings()
+
   return (
     <section ref={ref} className="py-20 px-8 md:px-12 bg-gray-50">
       <h2 className={`text-3xl md:text-4xl font-bold text-center text-gray-900 mb-14 animate-fade-up ${isVisible ? 'visible' : ''}`}>
@@ -13,12 +16,12 @@ const Vision = () => {
             BE GENIUS L&apos;INTELLIGENCE POUR SUBLIMER LE SAVOIR
           </h3>
           <p className="text-gray-600 text-sm leading-loose">
-            Be genuis Celebrons l&apos;intelligence pour sublimer le savoir-faire Be genuis Celebrons l&apos;intelligence pour sublimer le savoir-faire Bee genuis Celebrons l&apos;intelligence pour sublimer le savoir-faire Be genuis Celebrons l&apos;intelligence pour sublimoir-faire Be genuis Celebrons l&apos;intelligence pour sublimer le savoir-faire gence pour sublimoir-faire Be genuis Celebrons l&apos;intelligence pour sublimer le savoir-faire
+            Be genuis Celebrons l&apos;intelligence pour sublimer le savoir-faire Be genuis Celebrons l&apos;intelligence pour sublimer le savoir-faire Bee genuis Celebrons l&apos;intelligence pour sublimer le savoir-faire.
           </p>
         </div>
         <div className={`flex-1 w-full animate-fade-right ${isVisible ? 'visible' : ''}`}>
           <div className="w-full h-72 bg-gray-200 overflow-hidden shadow-lg">
-            <img src="/vision.png" alt="Notre vision" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            <img src={img('vision', '/vision.png')} alt="Notre vision" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
         </div>
       </div>

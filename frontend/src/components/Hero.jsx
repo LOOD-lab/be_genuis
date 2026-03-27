@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
 import useInView from '../hooks/useInView'
-
-const slides = [
-  { img: "/hero.png" },
-  { img: "/hero2.png" },
-  { img: "/hero3.png" },
-]
+import { useSettings } from '../hooks/useSettings'
 
 const Hero = () => {
   const [current, setCurrent] = useState(0)
   const [ref, isVisible] = useInView()
+  const { img } = useSettings()
+
+  const slides = [
+    img('hero', '/hero.png'),
+    img('hero2', '/hero2.png'),
+    img('hero3', '/hero3.png'),
+  ]
 
   useEffect(() => {
     const t = setInterval(() => setCurrent((p) => (p + 1) % slides.length), 5000)
@@ -25,37 +27,22 @@ const Hero = () => {
         <p className="text-gray-500 text-base leading-relaxed mb-10">
           Be genuis Celebrons l&apos;intelligence pour sublimer le savoir-faire Be genuis Celebrons l&apos;intelligence pour sublimer le savoir-faire
         </p>
-        <a
-          href="#"
-          className="inline-block bg-yellow-400 text-black font-bold px-8 py-4 text-xs uppercase tracking-widest hover:bg-yellow-500 hover:scale-105 transition-all duration-300"
-        >
+        <a href="#" className="inline-block bg-yellow-400 text-black font-bold px-8 py-4 text-xs uppercase tracking-widest hover:bg-yellow-500 hover:scale-105 transition-all duration-300">
           DECOUVRIR BE GENIUS
         </a>
       </div>
       <div className={`flex-1 relative w-full max-w-xl animate-fade-right ${isVisible ? 'visible' : ''}`}>
-        <div className="relative w-full h-80 md:h-96 overflow-hidden">
-          {slides.map((slide, i) => (
-            <img
-              key={i}
-              src={slide.img}
-              alt="Be Genius"
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === current ? 'opacity-100' : 'opacity-0'}`}
-            />
+        <div className="relative w-full h-80 md:h-96 overflow-hidden bg-gray-100">
+          {slides.map((src, i) => (
+            <img key={i} src={src} alt="Be Genius" className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === current ? 'opacity-100' : 'opacity-0'}`} />
           ))}
         </div>
-        <button
-          onClick={() => setCurrent((p) => (p + 1) % slides.length)}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-yellow-400 hover:bg-yellow-500 w-12 h-20 flex items-center justify-center transition-colors z-10"
-        >
+        <button onClick={() => setCurrent((p) => (p + 1) % slides.length)} className="absolute right-0 top-1/2 -translate-y-1/2 bg-yellow-400 hover:bg-yellow-500 w-12 h-20 flex items-center justify-center transition-colors z-10">
           <span className="text-black font-black text-xl">&#62;</span>
         </button>
         <div className="flex gap-2 justify-center mt-4">
           {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`w-2 h-2 rounded-full transition-colors ${i === current ? 'bg-yellow-400' : 'bg-gray-300'}`}
-            />
+            <button key={i} onClick={() => setCurrent(i)} className={`w-2 h-2 rounded-full transition-colors ${i === current ? 'bg-yellow-400' : 'bg-gray-300'}`} />
           ))}
         </div>
       </div>
