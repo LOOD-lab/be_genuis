@@ -85,7 +85,7 @@ const Footer = () => {
       </div>
       <div className="border-t border-gray-800 py-5 px-8 md:px-16 flex flex-col md:flex-row items-center justify-between gap-2">
         <p className="text-xs text-gray-600">BE GENIUS Institut &copy; 2026. Tous droits reserves.</p>
-        <p className="text-xs text-gray-700">Membre par: CCCO &nbsp;|&nbsp; Mise a jour le 11/01/2026</p>
+        <p className="text-xs text-gray-700">Mise a jour le 11/01/2026</p>
       </div>
     </footer>
   )
