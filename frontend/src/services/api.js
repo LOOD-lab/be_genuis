@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:8000/api'
-const MEDIA_URL = 'http://localhost:8000'
+const BASE_URL = 'https://be-genius-backend.onrender.com/api'
+const MEDIA_URL = 'https://be-genius-backend.onrender.com'
 
 const getToken = () => localStorage.getItem('token')
 

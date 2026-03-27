@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const BASE_URL = 'http://localhost:8000'
+const BASE_URL = 'https://be-genius-backend.onrender.com'
 let cache = null
 
 export const useSettings = () => {

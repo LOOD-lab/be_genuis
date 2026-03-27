@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { api } from '../../services/api'
 
-const BASE_URL = 'http://localhost:8000'
+const BASE_URL = 'https://be-genius-backend.onrender.com'
 
 const SITE_SLOTS = [
   { key: 'hero', label: 'Hero - Image 1', hint: 'Slider hero, 1ere image' },
