@@ -1,9 +1,10 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Header
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from jose import jwt
 import bcrypt
+import os
 from app.core.database import get_db
 from app.core.config import settings
 from app.models.user import User
@@ -24,7 +25,16 @@ def create_token(data: dict) -> str:
     return jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
 
 @router.post("/register", response_model=UserOut, status_code=201)
-def register(data: UserCreate, db: Session = Depends(get_db)):
+def register(
+    data: UserCreate,
+    db: Session = Depends(get_db),
+    x_admin_secret: str = Header(None)
+):
+    admin_secret = os.getenv("ADMIN_REGISTER_SECRET", "")
+    if not admin_secret:
+        raise HTTPException(status_code=503, detail="Inscription desactivee")
+    if x_admin_secret != admin_secret:
+        raise HTTPException(status_code=403, detail="Secret incorrect")
     existing = db.query(User).filter(User.email == data.email).first()
     if existing:
         raise HTTPException(status_code=400, detail="Email deja utilise")
