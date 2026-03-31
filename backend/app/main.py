@@ -5,7 +5,6 @@ from app.core.database import engine, Base
 from app.routes import evenements, actualites, contact, rapports, inscriptions, auth, upload
 import os
 
-# Import settings separement pour gerer l'erreur si la table n'existe pas encore
 try:
     from app.routes import settings as settings_router
     has_settings = True
@@ -19,9 +18,10 @@ app = FastAPI(title="Be Genius API", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-    "http://localhost:5173",
-    "https://be-genuis.vercel.app",
-],
+        "http://localhost:5173",
+        "https://be-genuis.vercel.app",
+        "https://be-genuis-*.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
